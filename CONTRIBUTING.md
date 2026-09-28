@@ -7,6 +7,12 @@ Bug reports, documentation improvements, and pull requests are welcome.
 Use a Mac with Xcode Command Line Tools (`xcode-select --install` if needed).
 No package manager or third-party library is required to build the app.
 
+Codex source and build scripts remain at the repository root. The Claude Code
+companion has an independent layout under `claude/`; see its
+[development notes](https://github.com/2jungi/weekly-usage-bar/blob/main/claude/CONTRIBUTING.md)
+for authentication precautions. Run the same commands prefixed with `./claude/`
+to work on that app, for example `./claude/scripts/test.sh`.
+
 ```sh
 ./scripts/test.sh
 ./scripts/build.sh
@@ -44,9 +50,31 @@ license; third-party rights remain separate.
 
 ## Releases
 
-Update `packaging/Info.plist`, the reader's client version, and `CHANGELOG.md`.
-Run `./scripts/test.sh`, `./scripts/package.sh`, and `./scripts/test-package.sh`, inspect the ZIP, then attach
-the ZIP and its generated `SHA256SUMS.txt` to a GitHub release.
+Repository releases may contain different component versions: `v1.3.0` includes
+Codex app 1.2.0 and Claude app 1.0.0. State both versions in release notes. Build
+and validate each component from its own directory, then attach both installer
+ZIPs and one combined `SHA256SUMS.txt`. For example, from the repository root:
+
+```sh
+./scripts/test.sh
+./scripts/package.sh
+./scripts/test-package.sh
+./claude/scripts/test.sh
+./claude/scripts/package.sh
+./claude/scripts/test-package.sh
+mkdir -p .build/release
+cp dist/Weekly-Usage-Mac-Installer.zip .build/release/
+cp claude/dist/Claude-Weekly-Usage-Mac-Installer.zip .build/release/
+(cd .build/release && shasum -a 256 *.zip > SHA256SUMS.txt)
+```
+
+The landing READMEs describe both apps. Codex-specific guides are in `docs/` and
+are copied into the Codex installer as its READMEs; Claude guides live in `claude/`.
+Keep the English and Korean guides aligned with the corresponding component.
+
+For application behavior changes, update that component's `packaging/Info.plist`,
+reader client version, and `CHANGELOG.md`. Repository-only documentation changes
+need not change component versions. Inspect both final ZIPs before publishing.
 The signing step is ad-hoc signing; it is not notarization or a Developer ID.
 Do not describe untested OS/CPU combinations as runtime-verified.
 

@@ -1,118 +1,81 @@
 # Weekly Usage Bar
 
-**See your remaining Codex weekly quota in the macOS menu bar.**
+**See your remaining Codex and Claude Code weekly quotas in the macOS menu bar.**
 
-[한국어](README.md) · [Download](https://github.com/2jungi/weekly-usage-bar/releases/latest) · [Issues](https://github.com/2jungi/weekly-usage-bar/issues) · [MIT license](LICENSE)
+[한국어](README.md) · [Downloads](https://github.com/2jungi/weekly-usage-bar/releases/latest) · [Issues](https://github.com/2jungi/weekly-usage-bar/issues) · [MIT license](LICENSE)
 
-```text
-44%  [service icon]
- ↑
-remaining weekly quota
-```
+Two independent menu bar apps: install either one or run both together.
+Each displays **remaining % → service icon**; click for quota details and reset times.
+This is a community project, not an official OpenAI or Anthropic product.
 
-A small native Swift/AppKit app that puts the remaining percentage **before** the service icon. Click it to see usage, the next reset time, and the last successful refresh. This is an **independent community project**, not an official OpenAI app.
+## Choose your app
 
-## Features
-
-- Refreshes approximately every minute, after waking your Mac, and on demand.
-- Optional installation with automatic launch at your next login.
-- English menus, or Korean when Korean is your preferred macOS language.
-- No Dock icon and no bundled package dependencies.
-- Shows `--%` when data is unavailable, outdated, or past its reset time. Last-known values in the menu are labeled accordingly.
-
-## Requirements
-
-- The app targets **macOS 13 Ventura or later**, with a universal Apple Silicon / Intel binary.
-- Install the official **Codex desktop app or CLI separately**, then sign in with your **ChatGPT account**. See the [official CLI setup guide](https://developers.openai.com/codex/cli/).
-- A ChatGPT desktop app that includes Codex is also detected. A standalone ChatGPT app without a Codex executable is not sufficient.
-- The account must return a Codex weekly quota, and refreshing requires an internet connection. API-key-only authentication does not provide this balance.
-
-Runtime and live quota retrieval have been tested on **Apple Silicon with macOS 26.2**. Intel and macOS 13–25 are build targets, not hardware-verified configurations. Your separately installed Codex runtime may have additional requirements. Windows and Linux are not supported.
+| | Codex | Claude Code |
+| --- | --- | --- |
+| Installer | [Weekly-Usage-Mac-Installer.zip](https://github.com/2jungi/weekly-usage-bar/releases/latest/download/Weekly-Usage-Mac-Installer.zip) | [Claude-Weekly-Usage-Mac-Installer.zip](https://github.com/2jungi/weekly-usage-bar/releases/latest/download/Claude-Weekly-Usage-Mac-Installer.zip) |
+| Installed app | `Weekly Usage.app` | `Claude Weekly Usage.app` |
+| Required sign-in | ChatGPT account in a separately installed Codex runtime | Subscription account in a separately installed Claude Code CLI |
+| Menu bar | Overall Codex weekly quota remaining | Overall Claude weekly quota remaining |
+| Refresh interval | About 1 minute | About 5 minutes, with server cooldown handling |
+| Click for | Weekly usage, remaining quota, and reset time | Weekly details plus the five-hour quota and reset time |
+| Full guide | [Codex installation and usage](docs/codex.en.md) | [Claude Code installation and usage](claude/README.en.md) |
+| Source | [`Sources/`](Sources) | [`claude/Sources/`](claude/Sources) |
 
 ## Install without building
 
-1. Open [the latest release](https://github.com/2jungi/weekly-usage-bar/releases/latest) and download **`Weekly-Usage-Mac-Installer.zip`**, not GitHub's automatically generated source-code ZIP.
-2. Double-click the ZIP to extract it fully.
-3. In the `Weekly Usage` folder, double-click **`install.command`**. A Terminal window installs the app and its login item.
-4. Close Terminal when installation finishes. The menu bar shows **remaining % → service icon**.
+1. Download the **installer ZIP** for your service from the table above. GitHub's automatic source-code ZIP is not an installer.
+2. Extract it fully and double-click **`install.command`** inside the extracted folder.
+3. Close Terminal when installation finishes. The app starts automatically at your next Mac login.
+4. To display both services, repeat with the other app's ZIP.
 
-The installer uses your own home folder and does not require administrator access to copy files. The app is installed at `~/Applications/Weekly Usage.app` and starts automatically at your next login. The installer prints a bilingual completion message.
+Apps install to your own `~/Applications` folder with distinct names and login items.
+Each ZIP includes installation/uninstallation tools, English and Korean instructions, the MIT license, and third-party notices.
+To update, run the new ZIP's installer; to uninstall, run that app's `uninstall.command`.
+
+Universal builds target **macOS 13+ on Apple Silicon and Intel**. Runtime validation was performed on Apple Silicon/macOS 26.2 only.
+Windows and Linux are not supported. API-key-only, pay-as-you-go accounts do not provide the displayed subscription quota.
 
 ### First-launch security prompt
 
-Public builds are **ad-hoc signed, not Developer ID signed or Apple-notarized**. macOS may block the installer or app because it cannot verify the developer.
+Builds are **not Developer ID signed or Apple-notarized**. After trying to open the file once,
+use **System Settings → Privacy & Security → Open Anyway** for that specific file.
+See [Apple's instructions](https://support.apple.com/102445).
+The installers do not disable Gatekeeper or strip quarantine attributes.
 
-After confirming that you downloaded the file from this repository, try opening it once, then use **System Settings → Privacy & Security → Open Anyway** for that specific file. macOS may ask for your login credentials. Follow [Apple's instructions](https://support.apple.com/102445). Managed Macs may prohibit this. The installer does not disable Gatekeeper or strip quarantine attributes.
+## Authentication, privacy, and icons
 
-## Using the app
-
-Click the menu bar item for remaining/used percentages, the reset time in your Mac's local time zone, the last check time, refresh, open ChatGPT/Codex, and quit. Quitting stops it for this session; the login item starts it again at the next login.
-
-To reopen it now, use Finder → Go → Go to Folder, enter `~/Applications`, and open `Weekly Usage.app`.
-
-### What the number means
-
-The app calls [`account/rateLimits/read` through the official Codex App Server](https://learn.chatgpt.com/docs/app-server), selects the `codex` bucket's **10,080-minute (7-day)** window, and displays `100 − usedPercent`, rounded down and clamped to 0–100%.
-
-It does not add short-term quotas, general ChatGPT message limits, or reserve-model quotas. Missing data is never interpreted as zero or unlimited usage. Multiple Macs signed into the same account share that account's quota.
-
-### Service icon
-
-If your separately installed official ChatGPT/Codex app contains a compatible menu bar logo, Weekly Usage reads it at runtime without copying it. **The repository and public release ZIP do not contain OpenAI logo files.** Otherwise, it displays a built-in macOS usage symbol. Quota retrieval works with either icon. See [third-party notices](THIRD_PARTY_NOTICES.md).
-
-## Troubleshooting
-
-| Symptom | What to check |
-| --- | --- |
-| `--%` | Read the menu's status message, check your connection and Codex sign-in, then select Refresh now. |
-| Codex not found | Official apps are searched in `/Applications` and `~/Applications`. CLI locations are `/opt/homebrew/bin/codex`, `/usr/local/bin/codex`, and `~/.local/bin/codex`. Arbitrary paths and version-manager-only paths are not searched. |
-| Signed in, but no weekly quota | Check that Codex uses ChatGPT sign-in. The account might not expose a weekly window, or the service response may have changed. |
-| Different icon | No compatible logo was found in an installed official app; the fallback is expected. |
-| No menu bar item | Reopen the app and check menu bar auto-hide or third-party menu bar managers. |
-| Download will not open | Extract the ZIP first and follow the first-launch section above. |
-
-A connection check is available without starting a model conversation:
-
-```sh
-"$HOME/Applications/Weekly Usage.app/Contents/MacOS/WeeklyUsage" --check
-```
-
-When [reporting a bug](https://github.com/2jungi/weekly-usage-bar/issues), include your macOS version, chip, app version, and status message. **Do not post tokens, `auth.json`, account email addresses, or private conversations.**
-
-## Update or uninstall
-
-**Update:** Download a new release and run its `install.command`. It stops the existing app and keeps the previous version under a dated name in `~/Applications`. There is no automatic updater.
-
-**Uninstall:** Run `uninstall.command` from the release folder. It moves the app and login item to Trash. Your Codex installation and sign-in are preserved. Previously backed-up app versions can be moved to Trash separately.
-
-Installed files:
-
-```text
-~/Applications/Weekly Usage.app
-~/Library/LaunchAgents/io.github.2jungi.weekly-usage-bar.plist
-```
-
-## Privacy
-
-The project has no analytics, ads, or tracking backend. It does not directly read tokens or transfer credentials between Macs: the official local Codex runtime handles existing authentication and communicates with OpenAI. This public version holds quota responses in memory and writes no separate account or usage log. Codex's own authentication, logging, and network behavior remain governed by its settings and policies.
-
-Only a quota read is requested: no model prompt, new conversation, payment, or quota-reset request is sent.
+- **Codex:** The official, locally installed Codex App Server handles authentication and reads limits. This app does not directly read tokens.
+- **Claude Code:** Reads existing Claude Code credentials from Keychain or its credential file into memory, then sends the access token only to Anthropic's usage endpoint. It attempts renewal through the official Claude Code CLI. Read the [authentication details and limitations](claude/README.en.md#authentication-and-privacy).
+- Claude's usage endpoint is not a guaranteed public third-party API and may change or become unavailable.
+- The apps have no advertising or tracking backend and write no separate usage logs in normal operation. Each official runtime's own behavior follows its settings and policies.
+- No credentials, official executables, or service artwork are bundled. Compatible service icons are read from separately installed official apps; otherwise a macOS system icon is used.
+- Missing or stale data displays `--%`. See the app-specific guides for sign-in and troubleshooting.
 
 ## Build from source
 
-Requires macOS and Xcode Command Line Tools. No additional packages are downloaded during the build.
+Requires macOS and Xcode Command Line Tools. No extra packages are downloaded.
 
 ```sh
 git clone https://github.com/2jungi/weekly-usage-bar.git
 cd weekly-usage-bar
+
+# Codex
 ./scripts/test.sh
 ./scripts/package.sh
+./scripts/test-package.sh
+
+# Claude Code
+./claude/scripts/test.sh
+./claude/scripts/package.sh
+./claude/scripts/test-package.sh
 ```
 
-Outputs: `dist/Weekly-Usage-Mac-Installer.zip` and `dist/SHA256SUMS.txt`. For just the app, run `./scripts/build.sh`. See [CONTRIBUTING.md](CONTRIBUTING.md) for development and validation details.
+Codex artifacts go to `dist/`; Claude artifacts go to `claude/dist/`.
+See [CONTRIBUTING.md](CONTRIBUTING.md) for development and release instructions.
 
 ## License
 
-Project source and documentation are provided under the **[MIT license](LICENSE)**, including its notice-preservation requirement and warranty disclaimer.
-
-The MIT license **does not grant rights to OpenAI, ChatGPT, or Codex names/logos, Apple assets, or separately installed third-party software**. This project is not affiliated with, endorsed by, or sponsored by OpenAI or Apple. See [THIRD_PARTY_NOTICES.md](THIRD_PARTY_NOTICES.md).
+Original source and documentation use the **[MIT license](LICENSE)**.
+It does not license OpenAI, ChatGPT, Codex, Anthropic, or Claude names/logos, Apple assets, or separately installed official software.
+This project is not affiliated with or endorsed by those companies.
+See the [third-party notices](THIRD_PARTY_NOTICES.md) and [Claude-specific notices](claude/THIRD_PARTY_NOTICES.md).

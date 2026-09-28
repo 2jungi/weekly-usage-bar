@@ -6,15 +6,13 @@ cd "$root"
 mkdir -p dist
 stage=$(mktemp -d "$root/.build/package.XXXXXX")
 trap 'rm -rf "$stage"' EXIT
-package="$stage/Weekly Usage"
+package="$stage/Claude Weekly Usage"
 mkdir -p "$package"
-ditto '.build/Weekly Usage.app' "$package/Weekly Usage.app"
+ditto '.build/Claude Weekly Usage.app' "$package/Claude Weekly Usage.app"
 cp packaging/install.command packaging/uninstall.command "$package/"
-cp docs/codex.md "$package/README.md"
-cp docs/codex.en.md "$package/README.en.md"
-cp CONTRIBUTING.md CHANGELOG.md LICENSE THIRD_PARTY_NOTICES.md "$package/"
+cp README.md README.en.md CONTRIBUTING.md CHANGELOG.md LICENSE THIRD_PARTY_NOTICES.md "$package/"
 chmod 755 "$package/install.command" "$package/uninstall.command"
-archive="$root/dist/Weekly-Usage-Mac-Installer.zip"
+archive="$root/dist/Claude-Weekly-Usage-Mac-Installer.zip"
 ditto -c -k --norsrc --noextattr --keepParent "$package" "$archive"
-(cd dist && shasum -a 256 Weekly-Usage-Mac-Installer.zip > SHA256SUMS.txt)
+(cd dist && shasum -a 256 Claude-Weekly-Usage-Mac-Installer.zip > SHA256SUMS.txt)
 print -- "Packaged: $archive"

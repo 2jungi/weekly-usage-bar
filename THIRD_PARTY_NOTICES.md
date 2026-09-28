@@ -21,6 +21,18 @@ Use of OpenAI marks remains subject to [OpenAI's brand guidelines and usage
 terms](https://openai.com/brand/). Local loading does not transfer ownership
 or grant additional reuse or redistribution rights.
 
+## Anthropic and Claude
+
+The Claude Code companion in `claude/` is an independent utility, not an official
+Anthropic product. Anthropic and Claude names and logos belong to their respective
+rights holders; the MIT license grants no trademark or artwork rights.
+
+No Anthropic artwork, Claude Code executable, or credentials are bundled. The
+Claude menu bar app can read a logo from the user's separately installed official
+Claude desktop app at runtime. This does not grant redistribution rights. Claude
+Code and Anthropic services remain subject to their own licenses and terms.
+See the [Claude-specific notices](https://github.com/2jungi/weekly-usage-bar/blob/main/claude/THIRD_PARTY_NOTICES.md).
+
 ## macOS and system symbols
 
 macOS, AppKit and SF Symbols are Apple technologies. The fallback symbol is
@@ -30,6 +42,6 @@ relicense Apple technologies or assets.
 
 ## External runtime
 
-Users install and authenticate the official Codex runtime separately. Its
-license and applicable service terms are independent of this project's MIT
-license. Weekly Usage Bar has no bundled third-party package dependencies.
+Users install and authenticate the official Codex or Claude Code runtime
+separately. Their licenses and applicable service terms are independent of this
+project's MIT license. Neither app bundles third-party package dependencies.

@@ -1,5 +1,20 @@
 # Changelog
 
+## 1.3.0 — 2026-09-28
+
+Repository release containing Codex app 1.2.0 and Claude app 1.0.0.
+Codex application behavior is unchanged; its packaged instructions are now
+maintained in `docs/codex.md` and `docs/codex.en.md`.
+
+- Add the independent Claude Code companion under `claude/`, with its own installer.
+- Display overall Claude weekly quota remaining, with five-hour details in the menu.
+- Refresh approximately every five minutes and honor server rate-limit cooldowns.
+- Read existing Claude Code authentication locally; renewal is delegated to the
+  official CLI. The internal usage endpoint may change without compatibility guarantees.
+- Keep both apps' installation paths and login items separate so they can run together.
+- Add bilingual app selection, installation guides, and Anthropic trademark notices.
+- Distribute both universal installer ZIPs with a combined SHA-256 checksum file.
+
 ## 1.2.0 — 2026-09-28
 
 First public source and binary release.

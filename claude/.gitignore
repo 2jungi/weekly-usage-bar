@@ -9,6 +9,4 @@ dist/
 .env
 .env.*
 auth.json
-.credentials.json
-*-ui-status.json
 status.json
