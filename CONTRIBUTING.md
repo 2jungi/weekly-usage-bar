@@ -7,19 +7,25 @@ Bug reports, documentation improvements, and pull requests are welcome.
 Use a Mac with Xcode Command Line Tools (`xcode-select --install` if needed).
 No package manager or third-party library is required to build the app.
 
-Codex source and build scripts remain at the repository root. The Claude Code
-companion has an independent layout under `claude/`; see its
+Codex lives under `codex/` and Claude Code under `claude/`. Both components have
+their own `Sources/`, `Tests/`, `scripts/`, and `packaging/` directories. See the Claude
 [development notes](https://github.com/2jungi/weekly-usage-bar/blob/main/claude/CONTRIBUTING.md)
-for authentication precautions. Run the same commands prefixed with `./claude/`
-to work on that app, for example `./claude/scripts/test.sh`.
+for authentication precautions. From the repository root, use the corresponding
+component's scripts:
 
 ```sh
-./scripts/test.sh
-./scripts/build.sh
-open '.build/Weekly Usage.app'
+# Codex
+./codex/scripts/test.sh
+./codex/scripts/build.sh
+open 'codex/.build/Weekly Usage.app'
+
+# Claude Code
+./claude/scripts/test.sh
+./claude/scripts/build.sh
+open 'claude/.build/Claude Weekly Usage.app'
 ```
 
-Running the app requires a separately installed and authenticated Codex runtime.
+Running an app requires its separately installed and authenticated official runtime.
 Parser tests do not require a login or network connection.
 Quit an already-running installed copy before opening a development build.
 
@@ -27,15 +33,16 @@ Quit an already-running installed copy before opening a development build.
 
 | File | Responsibility |
 | --- | --- |
-| `Sources/UsageSnapshot.swift` | Select and validate the weekly Codex quota. |
-| `Sources/UsageReader.swift` | Initialize the local Codex app-server connection and read limits. |
-| `Sources/LocalAssets.swift` | Read an installed service icon or request the system fallback. |
-| `Sources/Localization.swift` | Choose Korean or English UI text. |
-| `Sources/main.swift` | Menu bar lifecycle, refresh, and error display. |
-| `packaging/` | App metadata and per-user install/uninstall tools. |
-| `scripts/` | Tests, universal build, and release packaging. |
+| `codex/Sources/`, `claude/Sources/` | Quota parsing, service connection, icons, localization, and menu bar UI. |
+| `codex/Tests/`, `claude/Tests/` | Offline quota and response validation. |
+| `codex/packaging/`, `claude/packaging/` | App metadata and per-user install/uninstall tools. |
+| `codex/scripts/`, `claude/scripts/` | Tests, universal builds, and release packaging. |
+| `codex/.build/`, `claude/.build/` | Ignored build output for each component. |
+| `codex/dist/`, `claude/dist/` | Ignored installer ZIPs and checksums for each component. |
 
-Before a pull request, run `./scripts/test.sh` and build both architectures.
+Before a pull request, run the affected component's `scripts/test.sh` and build
+both architectures. The scripts locate their component directory automatically,
+so they also work when invoked from outside the repository.
 If changing installation behavior, validate it in a disposable directory using
 `install.command --prepare-only /absolute/test/path`. This copies files and
 creates the login plist under that path, but does not start or stop real apps.
@@ -56,14 +63,14 @@ and validate each component from its own directory, then attach both installer
 ZIPs and one combined `SHA256SUMS.txt`. For example, from the repository root:
 
 ```sh
-./scripts/test.sh
-./scripts/package.sh
-./scripts/test-package.sh
+./codex/scripts/test.sh
+./codex/scripts/package.sh
+./codex/scripts/test-package.sh
 ./claude/scripts/test.sh
 ./claude/scripts/package.sh
 ./claude/scripts/test-package.sh
 mkdir -p .build/release
-cp dist/Weekly-Usage-Mac-Installer.zip .build/release/
+cp codex/dist/Weekly-Usage-Mac-Installer.zip .build/release/
 cp claude/dist/Claude-Weekly-Usage-Mac-Installer.zip .build/release/
 (cd .build/release && shasum -a 256 *.zip > SHA256SUMS.txt)
 ```

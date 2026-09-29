@@ -1,5 +1,13 @@
 # Changelog
 
+## Unreleased
+
+- Move Codex source, tests, build scripts, and installer files under `codex/`,
+  matching the Claude component layout. Build Codex with `./codex/scripts/build.sh`
+  and package it with `./codex/scripts/package.sh`; artifacts now go to `codex/dist/`.
+- Update both README build instructions and contributor documentation. This is a
+  repository layout change; application behavior and installed paths are unchanged.
+
 ## 1.3.0 — 2026-09-28
 
 Repository release containing Codex app 1.2.0 and Claude app 1.0.0.

@@ -24,7 +24,7 @@ OpenAI 또는 Anthropic이 만든 공식 앱이 아닌 커뮤니티 프로젝트
 | 자동 갱신 | 약 1분 | 약 5분, 서버 조회 제한 시 대기 |
 | 클릭 메뉴 | 주간 사용률·잔액·초기화 시각 | 주간 정보와 5시간 한도·초기화 시각 |
 | 상세 안내 | [Codex 설치·사용법](docs/codex.md) | [Claude Code 설치·사용법](claude/README.md) |
-| 소스 위치 | [`Sources/`](Sources) | [`claude/Sources/`](claude/Sources) |
+| 소스 위치 | [`codex/Sources/`](codex/Sources) | [`claude/Sources/`](claude/Sources) |
 
 ## 설치 — 코딩 도구가 필요하지 않습니다
 
@@ -65,9 +65,9 @@ git clone https://github.com/2jungi/weekly-usage-bar.git
 cd weekly-usage-bar
 
 # Codex용
-./scripts/test.sh
-./scripts/package.sh
-./scripts/test-package.sh
+./codex/scripts/test.sh
+./codex/scripts/package.sh
+./codex/scripts/test-package.sh
 
 # Claude Code용
 ./claude/scripts/test.sh
@@ -75,7 +75,7 @@ cd weekly-usage-bar
 ./claude/scripts/test-package.sh
 ```
 
-Codex 설치 파일은 `dist/`, Claude 설치 파일은 `claude/dist/`에 생성됩니다.
+Codex 설치 파일은 `codex/dist/`, Claude 설치 파일은 `claude/dist/`에 생성됩니다.
 개발과 배포 절차는 [기여 안내](CONTRIBUTING.md)를 참고하세요.
 
 ## 라이선스

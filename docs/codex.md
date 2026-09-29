@@ -121,7 +121,7 @@ macOS와 Xcode Command Line Tools가 필요합니다. 빌드에는 별도 패키
 
 ```sh
 git clone https://github.com/2jungi/weekly-usage-bar.git
-cd weekly-usage-bar
+cd weekly-usage-bar/codex
 ./scripts/test.sh
 ./scripts/package.sh
 ```

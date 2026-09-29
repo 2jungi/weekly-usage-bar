@@ -104,7 +104,7 @@ Requires macOS and Xcode Command Line Tools. No additional packages are download
 
 ```sh
 git clone https://github.com/2jungi/weekly-usage-bar.git
-cd weekly-usage-bar
+cd weekly-usage-bar/codex
 ./scripts/test.sh
 ./scripts/package.sh
 ```

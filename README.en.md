@@ -24,7 +24,7 @@ The percentages show the weekly balances when the screenshot was taken. Each app
 | Refresh interval | About 1 minute | About 5 minutes, with server cooldown handling |
 | Click for | Weekly usage, remaining quota, and reset time | Weekly details plus the five-hour quota and reset time |
 | Full guide | [Codex installation and usage](docs/codex.en.md) | [Claude Code installation and usage](claude/README.en.md) |
-| Source | [`Sources/`](Sources) | [`claude/Sources/`](claude/Sources) |
+| Source | [`codex/Sources/`](codex/Sources) | [`claude/Sources/`](claude/Sources) |
 
 ## Install without building
 
@@ -65,9 +65,9 @@ git clone https://github.com/2jungi/weekly-usage-bar.git
 cd weekly-usage-bar
 
 # Codex
-./scripts/test.sh
-./scripts/package.sh
-./scripts/test-package.sh
+./codex/scripts/test.sh
+./codex/scripts/package.sh
+./codex/scripts/test-package.sh
 
 # Claude Code
 ./claude/scripts/test.sh
@@ -75,7 +75,7 @@ cd weekly-usage-bar
 ./claude/scripts/test-package.sh
 ```
 
-Codex artifacts go to `dist/`; Claude artifacts go to `claude/dist/`.
+Codex artifacts go to `codex/dist/`; Claude artifacts go to `claude/dist/`.
 See [CONTRIBUTING.md](CONTRIBUTING.md) for development and release instructions.
 
 ## License
