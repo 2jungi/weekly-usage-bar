@@ -8,9 +8,9 @@ Two independent menu bar apps: install either one or run both together.
 Each displays **remaining % → service icon**; click for quota details and reset times.
 This is a community project, not an official OpenAI or Anthropic product.
 
-![Mac menu bar showing 99% Claude weekly quota remaining and 35% Codex weekly quota remaining](docs/assets/menu-bar-preview.png)
+![Mac menu bar showing 34% Codex weekly quota remaining and 98% Claude weekly quota remaining](docs/assets/menu-bar-preview.png)
 
-Both apps running together in a real Mac menu bar: **Claude on the left, Codex on the right**.
+Both apps running together in a real Mac menu bar: **Codex on the left, Claude on the right**.
 The percentages show the weekly balances when the screenshot was taken. Each app places the remaining percentage before its service icon.
 
 ## Choose your app

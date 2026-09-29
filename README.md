@@ -8,9 +8,9 @@
 각 앱은 **남은 비율 % → 서비스 아이콘** 순서로 표시하며, 클릭하면 한도와 초기화 시각을 보여줍니다.
 OpenAI 또는 Anthropic이 만든 공식 앱이 아닌 커뮤니티 프로젝트입니다.
 
-![Mac 메뉴바에 표시된 Claude 주간 잔액 99%와 Codex 주간 잔액 35%](docs/assets/menu-bar-preview.png)
+![Mac 메뉴바에 표시된 Codex 주간 잔액 34%와 Claude 주간 잔액 98%](docs/assets/menu-bar-preview.png)
 
-실제 메뉴바에서 두 앱을 함께 실행한 모습입니다. **왼쪽은 Claude, 오른쪽은 Codex**이며,
+실제 메뉴바에서 두 앱을 함께 실행한 모습입니다. **왼쪽은 Codex, 오른쪽은 Claude**이며,
 숫자는 촬영 당시의 주간 잔액입니다. 각 앱은 잔여 비율 다음에 서비스 아이콘을 표시합니다.
 
 ## 사용할 앱 선택
