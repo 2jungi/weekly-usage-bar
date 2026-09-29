@@ -58,7 +58,7 @@ It does not add short-term quotas, general ChatGPT message limits, or reserve-mo
 
 ### Service icon
 
-If your separately installed official ChatGPT/Codex app contains a compatible menu bar logo, Weekly Usage reads it at runtime without copying it. **The repository and public release ZIP do not contain OpenAI logo files.** Otherwise, it displays a built-in macOS usage symbol. Quota retrieval works with either icon. See [third-party notices](https://github.com/2jungi/weekly-usage-bar/blob/main/THIRD_PARTY_NOTICES.md).
+If your separately installed official ChatGPT/Codex app contains a compatible menu bar logo, Weekly Usage reads it at runtime without copying it. **The repository and public release ZIP do not contain standalone OpenAI logo assets.** The README's usage screenshot includes the service icons. If no compatible local logo is available, the app displays a built-in macOS usage symbol. Quota retrieval works with either icon. See [third-party notices](https://github.com/2jungi/weekly-usage-bar/blob/main/THIRD_PARTY_NOTICES.md).
 
 ## Troubleshooting
 

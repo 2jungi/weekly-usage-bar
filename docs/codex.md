@@ -73,7 +73,7 @@ Codex가 없다면 [공식 설치 안내](https://developers.openai.com/codex/cl
 
 ### 아이콘은 어디에서 오나요?
 
-설치된 공식 ChatGPT/Codex 앱에 메뉴바 로고가 있으면 해당 자산을 런타임에 읽어 표시합니다. **이 저장소와 공개 설치 ZIP에는 OpenAI 로고 파일이 들어 있지 않습니다.** 해당 자산이 없으면 macOS 기본 사용량 아이콘을 표시하며, 잔액 조회 기능은 동일합니다. 권리 관계는 [제3자 고지](https://github.com/2jungi/weekly-usage-bar/blob/main/THIRD_PARTY_NOTICES.md)를 참고하세요.
+설치된 공식 ChatGPT/Codex 앱에 메뉴바 로고가 있으면 해당 자산을 런타임에 읽어 표시합니다. **이 저장소와 공개 설치 ZIP에는 별도 OpenAI 로고 자산이 들어 있지 않습니다.** README의 사용 예시 스크린샷에는 서비스 아이콘이 표시됩니다. 해당 자산이 없으면 macOS 기본 사용량 아이콘을 표시하며, 잔액 조회 기능은 동일합니다. 권리 관계는 [제3자 고지](https://github.com/2jungi/weekly-usage-bar/blob/main/THIRD_PARTY_NOTICES.md)를 참고하세요.
 
 ## 문제가 생겼나요?
 

@@ -8,6 +8,11 @@ Two independent menu bar apps: install either one or run both together.
 Each displays **remaining % → service icon**; click for quota details and reset times.
 This is a community project, not an official OpenAI or Anthropic product.
 
+![Mac menu bar showing 99% Claude weekly quota remaining and 35% Codex weekly quota remaining](docs/assets/menu-bar-preview.png)
+
+Both apps running together in a real Mac menu bar: **Claude on the left, Codex on the right**.
+The percentages show the weekly balances when the screenshot was taken. Each app places the remaining percentage before its service icon.
+
 ## Choose your app
 
 | | Codex | Claude Code |
@@ -48,7 +53,7 @@ The installers do not disable Gatekeeper or strip quarantine attributes.
 - **Claude Code:** Reads existing Claude Code credentials from Keychain or its credential file into memory, then sends the access token only to Anthropic's usage endpoint. It attempts renewal through the official Claude Code CLI. Read the [authentication details and limitations](claude/README.en.md#authentication-and-privacy).
 - Claude's usage endpoint is not a guaranteed public third-party API and may change or become unavailable.
 - The apps have no advertising or tracking backend and write no separate usage logs in normal operation. Each official runtime's own behavior follows its settings and policies.
-- No credentials, official executables, or service artwork are bundled. Compatible service icons are read from separately installed official apps; otherwise a macOS system icon is used.
+- No credentials, official executables, or standalone service artwork are distributed. Compatible service icons are read from separately installed official apps; otherwise a macOS system icon is used. The screenshot above includes service icons to illustrate the apps in use.
 - Missing or stale data displays `--%`. See the app-specific guides for sign-in and troubleshooting.
 
 ## Build from source
