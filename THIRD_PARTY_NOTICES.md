@@ -35,7 +35,7 @@ See the [Claude-specific notices](https://github.com/2jungi/weekly-usage-bar/blo
 
 ## Documentation screenshot
 
-`docs/assets/menu-bar-preview.png` is a user-provided screenshot showing both apps
+`docs/assets/menu-bar-codex-claude-20260929.png` is a user-provided screenshot showing both apps
 in use. It includes OpenAI and Anthropic service icons for identification and
 illustration. The screenshot is documentation, not a source of reusable logo
 assets. Third-party marks shown in it remain the property of their owners and
